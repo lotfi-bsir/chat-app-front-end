@@ -1,0 +1,35 @@
+<input [(ngModel)]="contactFilter" class="sideBar-search" id="searchInput" placeholder="Search..." type="text"/>
+
+<div *ngFor="let contact of filteredContacts " class="row sideBar-body">
+  <div [queryParams]="{name:contact.name,avatar:contact.avatar}" [routerLink]="['/contact',contact.id]"
+       class="col-12 col-md-12">
+    <div class="row time-container">
+      <div class="col-12 col-md-12 float-right sideBar-time">
+                <span class="time-meta float-right">
+                    {{contact.time | date :'MM'}}/{{contact.time |date:'yyyy'}}, {{contact.time | date:'shortTime'}}
+                </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3 col-md-3 sideBar-avatar">
+        <div class="avatar-icon">
+          <img [alt]="contact.name" [src]="contact.avatar">
+          <span class="status status-{{contact.status}}"></span>
+        </div>
+      </div>
+      <div class="col-9 col-md-9 sideBar-main">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 sideBar-name">
+                        <span class="name-meta contact-name">
+                            {{contact.name}}
+                        </span>
+            <span class="name-meta last-message">
+                            {{contact.messages}}
+                        </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

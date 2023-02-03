@@ -1,0 +1,49 @@
+<!--header section-->
+<div class="row heading heading-container">
+  <div class="col-sm-10 col-md-10 col-xs-10">
+    <div class="heading-contact-container">
+      <div class="heading-avatar">
+        <div class="heading-avatar-icon">
+          <img [alt]="username" [src]="avatar">
+        </div>
+      </div>
+      <div class="heading-name">
+        <a class="heading-name-details">{{username}}
+        </a>
+        <!--          <span class="heading-online">Online</span>-->
+      </div>
+    </div>
+  </div>
+
+  <!--Settings-->
+  <div class="col-sm-1 col-md-1 col-xs-1  heading-dot float-right">
+    <fa-icon (click)="onLogout()" [icon]="logout" class="faIcon"> log out</fa-icon>
+
+  </div>
+</div>
+
+<!--messages section-->
+<div class="row message" id="conversation">
+
+  <div *ngFor="let message of messages" class="col-12 col-md-12" style="height: 60px">
+    <app-received-message *ngIf="message.id == id" [receivedMessage]="message"></app-received-message>
+    <app-sent-message *ngIf="message.id != id" [sendMessage]="message"></app-sent-message>
+  </div>
+
+
+</div>
+
+<!--reply section-->
+<div class="row reply">
+  <div class="col-1 col-sm-1 paperClip">
+    <fa-icon [icon]="faPaperClip" class="faIcon"></fa-icon>
+  </div>
+  <div class="col-9 col-sm-9 reply-main">
+    <textarea [(ngModel)]=messageToSend class="form-control" id="comment" placeholder="write a message..."
+              rows="1" (keyup.enter)="sendMessage()"></textarea>
+  </div>
+  <div class="col-2 col-sm-2 reply-send">
+    <button (click)="sendMessage()" class="btn btn-info btn-send" type="button">Send</button>
+  </div>
+</div>
+

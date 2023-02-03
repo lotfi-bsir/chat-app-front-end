@@ -1,0 +1,75 @@
+<body>
+
+<div class="box">
+  <form #f="ngForm" (ngSubmit)="signup(f)" autocomplete="off">
+    <h2>Sign up</h2>
+    <div class="d-flex flex-row">
+      <div class="p-2">
+        <div class="inputBox">
+          <input name="firstName" ngModel required type="text">
+          <span>First name</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input name="lastName" ngModel required type="text">
+          <span>Last name</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input name="email" ngModel required type="text">
+          <span>Email</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input #password="ngModel" name="password" ngModel required type="password">
+          <span>Password</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input #confirmPassword="ngModel" name="confirmPassword" ngModel required type="password">
+          <span>Confirm password</span>
+          <i></i>
+        </div>
+        <span *ngIf="(password.value !== confirmPassword.value) &&(confirmPassword.touched && password.touched) "
+              id="pwError">password don't match</span>
+        <div class="radio-group radioBox">
+          <div *ngFor="let gender of genders" class="radio-group radioBox">
+            <label class="radio">
+              <input [value]="gender" name="gender" ngModel required type="radio">
+              {{gender}}
+              <span></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="p-2" style="margin-left: 5%">
+        <div style="margin-top: 100px">
+          <h1 style="margin-left: 30%">choose photo</h1>
+          <br>
+          <img id="selectedPhoto" src="./assets/images/avatar.svg"
+               style="width: 200px;height: 200px;margin-left: 30%;border-radius: 50%">
+          <!--          <input (change)="onPhotoSelected($event)" name="photo" ngModel type="file" style="margin-left: 30%">-->
+          <div class="input-group mb-3" style="margin-top: 10%">
+            <div class="custom-file" style="margin-left: 30%">
+              <input (change)="onPhotoSelected($event)" aria-describedby="inputGroupFileAddon01"
+                     class="custom-file-input"
+                     id="inputGroupFile01" name="photo" ngModel
+                     required type="file">
+              <label class="custom-file-label" for="inputGroupFile01">Choose photo</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--    <input style="margin-top: 50px" type="submit" value="signup">-->
+    <button [disabled]="!f.valid"
+            style="margin-top: 50px;background-color: #45f3ff;width: 30%;margin-left: 33%;height: 50px"
+            type="submit">
+      Sign up
+    </button>
+  </form>
+</div>
+
+</body>

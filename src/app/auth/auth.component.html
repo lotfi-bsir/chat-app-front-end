@@ -1,0 +1,27 @@
+<body>
+<app-alert *ngIf="error" [message]="error" (closed)="handleClose()" ></app-alert>
+<!--<ng-template appPlaceholder></ng-template>-->
+<div class="box">
+
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" autocomplete="off">
+    <h2>Sign in</h2>
+    <div class="inputBox">
+      <input autocomplete="off" name="username" ngModel required type="text">
+      <span>Username</span>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input autocomplete="off" name="password" ngModel required type="password">
+      <span>Password</span>
+      <i></i>
+    </div>
+    <div class="links">
+      <a></a>
+      <a routerLink="/signup">Signup</a>
+    </div>
+    <input (click)="Login(authForm.value.username,authForm.value.password)" [disabled]="!authForm.valid" type="submit"
+           value="Login">
+  </form>
+</div>
+
+</body>

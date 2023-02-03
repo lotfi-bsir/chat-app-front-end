@@ -1,0 +1,71 @@
+<div class="main-container">
+  <div class="container app">
+    <div class="row app-container">
+
+      <!--Contact list section-->
+      <div class="col-12 col-md-4 side">
+        <div class="side-mainArea">
+          <div class="row heading">
+
+          </div>
+
+          <!--navigation buttons-->
+          <div class="row tabsContainer">
+            <div class="col-sm-12 tabsContainer-inner">
+              <div class="form-group has-feedback">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-container">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#chat">
+                      <fa-icon [icon]="faCommentDots" class="faIcon"></fa-icon>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#contacts">
+                      <fa-icon [icon]="faUser" class="faIcon"></fa-icon>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#search">
+                      <fa-icon [icon]="faSearch" class="faIcon"></fa-icon>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!--contacts section-->
+          <div class="tab-content">
+            <div class="tab-pane active" id="chat">
+              <div class="row sideBar">
+
+                <!--contact component-->
+                <app-contact></app-contact>
+
+              </div>
+            </div>
+            <div class="tab-pane fade" id="contacts">
+              All Contacts Section
+            </div>
+            <div class="tab-pane fade" id="search">
+              <!--contact component-->
+              <app-contact></app-contact>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--main chat section-->
+      <div class="col-12 col-md-8 conversation">
+        <router-outlet></router-outlet>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="row message-body">
+  <div class="col-sm-12 message-main-sender">
+    <div class="receiver-time">
+      {{sendMessage.time | date }}, {{sendMessage.time | date:'shortTime'}}
+    </div>
+    <div class="sender">
+      <div class="message-text">
+        {{sendMessage.message}}
+      </div>
+    </div>
+  </div>
+</div>
